@@ -1,0 +1,36 @@
+net: "./experiments/Text_to_Clip/train_lstm.prototxt"
+#train_state: { stage: 'embed-drop' stage: 'lstm-drop' }
+#test_iter: 25
+#test_state: { stage: 'test-on-train' }
+# test_iter: 25
+# test_state: { stage: 'test-on-val' }
+#test_interval: 1000
+
+
+# All parameters are from the cited paper above
+base_lr: 0.001
+momentum: 0.9
+momentum2: 0.999
+# since Adam dynamically changes the learning rate, we set the base learning
+# rate to a fixed value
+lr_policy: "fixed"
+
+
+display: 1
+max_iter: 271800
+
+
+weight_decay: 0.0000
+
+
+
+snapshot: 1000
+snapshot_prefix: "./experiments/Text_to_Clip/snapshot/lstm_lm"
+
+type: "Adam"
+solver_mode: GPU
+
+random_seed: 1701
+
+average_loss: 100
+clip_gradients: 10

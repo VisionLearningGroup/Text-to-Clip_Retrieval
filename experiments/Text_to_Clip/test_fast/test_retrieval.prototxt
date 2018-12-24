@@ -1,0 +1,73 @@
+# --------------------------------------------------------
+# Text-to-Clip Retrieval
+# Copyright (c) 2019 Boston Univ.
+# Licensed under The MIT License [see LICENSE for details]
+# By Huijuan Xu
+# --------------------------------------------------------
+
+name: "lstm_language_model"
+
+input: "last_hidden_state"
+input_shape { dim: 1 dim: 512 }
+
+layer {
+  name: "innerproduce2"
+  type: "InnerProduct"
+  bottom: "last_hidden_state"
+  top: "embedded_last_hidden_state_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 64
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+layer {
+  name: "hidden_relu"
+  type: "Sigmoid"
+  bottom: "embedded_last_hidden_state_2"
+  top: "embedded_last_hidden_state_2"
+}
+
+layer {
+  name: "innerproduce"
+  type: "InnerProduct"
+  bottom: "embedded_last_hidden_state_2"
+  top: "score"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 1
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+# layer {
+#   name: "sigmoid"
+#   type: "Sigmoid"
+#   bottom: "score"
+#   top: "score"
+# }
