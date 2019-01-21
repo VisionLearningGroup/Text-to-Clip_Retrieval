@@ -92,14 +92,14 @@ dataset](https://allenai.org/plato/charades/) and extract frames at 25fps.
    python generate_roidb_modified_freq1.py
    ```
 
-2. Download C3D classification [pretrain model](https://drive.google.com/file/d/1os4a1K4pgjhRh8oiL7gO_DhM0NnCURHN/view) to ./pretrain/ .
+2. Download C3D classification [pretrain model](https://drive.google.com/file/d/1os4a1K4pgjhRh8oiL7gO_DhM0NnCURHN/view?usp=sharing) to ./pretrain/ .
 
 3. In root folder, run proposal network training:
    ```Shell
    bash ./experiments/train_rpn/script_train.sh
    ```
 
-4. We provide one set of trained proposal network [model weights](https://drive.google.com/file/d/1w8TL-lm7wjOVTYgzBdHGvXbJc5AHZ16g/view).
+4. We provide one set of trained proposal network [model weights](https://drive.google.com/file/d/1w8TL-lm7wjOVTYgzBdHGvXbJc5AHZ16g/view?usp=sharing).
 
 
 ### Extract Proposal Features:
@@ -132,7 +132,7 @@ dataset](https://allenai.org/plato/charades/) and extract frames at 25fps.
 
    One Text_to_Clip model on Charades-STA dataset is provided in:
    [caffemodel
-   .](https://drive.google.com/file/d/10C2gPLQXyNZ39CVLVKiWpYy5qu1xGvtX/view)
+   .](https://drive.google.com/file/d/10C2gPLQXyNZ39CVLVKiWpYy5qu1xGvtX/view?usp=sharing)
 
    The provided model has Recall@1 (tIoU=0.7) score ~15.6% on the
    test set.
